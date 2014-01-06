@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+
+    <link rel="styleSheet" href="components/angular-bootstrap-nav-tree/dist/abn_tree.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+  <body ng-controller="IndexCtrl">
+    <!--[if lt IE 9]>
+        <p class="browsehappy">您正在使用<strong>已经过时的</strong>浏览器,
+          <a href="http://154.28.16.213/browser/chrome.exe">点击下载Chrome浏览器</a></p>
+        <![endif]-->
+
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">测试</a>
+        </div>
+        <div class="nav navbar-nav navbar-right navbar-brand">{{orgName}}</div>
+      </div>
+    </header>
+
+    <div class="container" style="width:100%">
+      <div class="col-md-2 z-nav-container">
+        <div class="z-nav-tree">
+          <abn-tree tree-data="navTreeData"
+                    icon-leaf="glyphicon glyphicon-file"
+                    on-select="navTreeHandler(branch)"
+                    expand-level="2"
+                    initial-selection="">
+          </abn-tree>
+        </div>
+      </div>
+
+      <div class="col-md-10">
+        <div>
+          <ol class="breadcrumb">
+            <li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+              <a href="#{{breadcrumb.path}}" ng-hide="$last">{{breadcrumb.label}}</a>
+              <span ng-show="$last">{{breadcrumb.label}}</span>
+            </li>
+          </ol>
+        </div>
+
+        <div ng-view></div>
+
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <!-- build:js scripts/plugins.js -->
+
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/modules/exporting.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="components/angular-breadcrumbs/angular-breadcrumbs.min.js"></script>
+    <script src="components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+
+    <script src="bower_components/bootstrap/js/button.js"></script>
+    <script src="bower_components/bootstrap/js/modal.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modules.js -->
+    <!-- <script src="bower_components/angular-resource/angular-resource.js"></script> -->
+    <!-- <script src="bower_components/angular-cookies/angular-cookies.js"></script> -->
+    <!-- <script src="bower_components/angular-sanitize/angular-sanitize.js"></script> -->
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/const.js"></script>
+    <script src="scripts/util.js"></script>
+
+    <script src="scripts/modules/index.js"></script>
+
+    <script src="scripts/modules/report/indexes.js"></script>
+
+    <script src="scripts/bootstrap.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
